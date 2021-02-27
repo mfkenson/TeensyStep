@@ -146,8 +146,11 @@ namespace TeensyStep{
     template <typename t>
     void MotorControlBase<t>::pulseTimerISR()
     {
+        unsigned i=0;
         for(const auto& stepper: motorList)
         {
+            if (++i==numSteppers)
+                break;
             stepper->clearStepPin();
         }
     }
