@@ -141,12 +141,14 @@ namespace TeensyStep
         // it's important that prepareMovement doesn't return vs = 0 here when running a motion as it will cause the stepper interrupt to end and the timers won't restart
         // This seems to not happen when running in the old target mode as the stop is returned before the timers are started.
         // A  workaround for now  is to never use vs = 0 in a motion chain.
-        this->timerField.setStepFrequency(accelerator.prepareMovement(this->leadMotor->current, this->leadMotor->target, targetSpeed, pullInSpeed, pullOutSpeed, acceleration));
         if(startTimers)
         {
             this->timerField.begin();
+            this->timerField.setStepFrequency(accelerator.prepareMovement(this->leadMotor->current, this->leadMotor->target, targetSpeed, pullInSpeed, pullOutSpeed, acceleration));
             this->timerField.stepTimerStart();
             this->timerField.accTimerStart();
+        } else {
+            this->timerField.setStepFrequency(accelerator.prepareMovement(this->leadMotor->current, this->leadMotor->target, targetSpeed, pullInSpeed, pullOutSpeed, acceleration));
         }
     }
 
