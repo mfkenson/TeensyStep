@@ -3,6 +3,7 @@
 #include "RotateControlBase.h"
 #include "StepControlBase.h"
 #include "MotionPlanner2D.h"
+#include "MotionPlanner6D.h"
 #include "Target.h"
 #include "Stepper.h"
 #include "accelerators/LinRotAccelerator.h"
@@ -61,4 +62,5 @@ using RotateControlTick = TeensyStep::RotateControlBase<LinStepAccelerator, Tick
 
 using Stepper = TeensyStep::Stepper;
 using MotionPlanner2D = TeensyStep::MotionPlanner2D<>;
+using MotionPlanner6D = TeensyStep::MotionPlanner6D<>;
 using Target = TeensyStep::Target;
